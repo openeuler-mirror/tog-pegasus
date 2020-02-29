@@ -11,7 +11,7 @@ Epoch:          2
 Summary:        OpenPegasus WBEM Services for Linux
 License:        MIT
 URL:            http://www.openpegasus.org
-Source0:        https://collaboration.opengroup.org/pegasus/documents/27211/pegasus-%{version}.tar.gz
+Source0:        https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-%{version}.tar.gz
 Source1:        tog-pegasus.tmpfiles
 Source2:        tog-pegasus.service
 Source3:        access.conf
