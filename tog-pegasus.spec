@@ -6,7 +6,7 @@
 
 Name:           tog-pegasus
 Version:        %{major_ver}.1
-Release:        48
+Release:        49
 Epoch:          2
 Summary:        OpenPegasus WBEM Services for Linux
 License:        MIT
@@ -267,7 +267,7 @@ fi
 /sbin/ldconfig
 
 %preun
-%systemd_preun stop tog-pegasus.service
+%systemd_preun tog-pegasus.service
 if [ $1 -eq 0 ]; then
    rm -rf /var/run/tog-pegasus
 fi
@@ -365,5 +365,8 @@ fi
 %{_mandir}/man1/*
 
 %changelog
+* Thu May 28 2020 Guoshuai Sun <sunguoshuai@huawei.com> - 2:2.14.1-49
+- Modify spec for unreasonable disable stop.service when removing pack.
+
 * Sat Feb 29 2020 Senlin Xia <xiasenlin1@huawei.com> - 2:2.14.1-48
 - Package init
