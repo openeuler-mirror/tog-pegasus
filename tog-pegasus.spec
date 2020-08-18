@@ -6,7 +6,7 @@
 
 Name:           tog-pegasus
 Version:        %{major_ver}.1
-Release:        49
+Release:        50
 Epoch:          2
 Summary:        OpenPegasus WBEM Services for Linux
 License:        MIT
