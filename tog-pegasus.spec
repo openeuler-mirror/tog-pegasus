@@ -6,7 +6,7 @@
 
 Name:           tog-pegasus
 Version:        %{major_ver}.1
-Release:        50
+Release:        51
 Epoch:          2
 Summary:        OpenPegasus WBEM Services for Linux
 License:        MIT
@@ -359,12 +359,15 @@ fi
 %verify(not md5 size mtime) /var/lib/Pegasus/testrepository
 
 %files help
-%defattr(0644, root, pegasus, 0755)
+%defattr(0644, root, root, 0755)
 %doc src/Clients/repupgrade/doc/repupgrade.html
 %{_mandir}/man8/*
 %{_mandir}/man1/*
 
 %changelog
+* Tue Aug 31 2021 caodongxia <caodongxia@huawei.com> - 2:2.14.1-51
+- Fix help package install warning 
+
 * Thu May 28 2020 Guoshuai Sun <sunguoshuai@huawei.com> - 2:2.14.1-49
 - Modify spec for unreasonable disable stop.service when removing pack.
 
