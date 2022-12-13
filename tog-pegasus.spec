@@ -6,7 +6,7 @@
 
 Name:           tog-pegasus
 Version:        %{major_ver}.1
-Release:        51
+Release:        52
 Epoch:          2
 Summary:        OpenPegasus WBEM Services for Linux
 License:        MIT
@@ -36,6 +36,7 @@ Patch15:        pegasus-2.13.0-gcc5-build.patch
 Patch16:        pegasus-2.14.1-build-fixes.patch
 Patch17:        pegasus-2.14.1-ssl-include.patch
 Patch18:        pegasus-2.14.1-openssl-1.1-fix.patch
+Patch19:        add-loongarch64-support.patch
 
 BuildRequires:  procps libstdc++ pam-devel openssl openssl-devel
 BuildRequires:  bash sed grep coreutils procps gcc gcc-c++ libstdc++
@@ -76,6 +77,9 @@ Header files for tog-pegasus
 %endif
 %ifarch aarch64
 %global PEGASUS_HARDWARE_PLATFORM LINUX_AARCH64_GNU
+%endif
+%ifarch loongarch64
+%global PEGASUS_HARDWARE_PLATFORM LINUX_LOONGARCH64_GNU
 %endif
 
 %global PEGASUS_ARCH_LIB %{_lib}
@@ -125,6 +129,7 @@ yes | mak/CreateDmtfSchema 238 %{SOURCE4} cim_schema_2.38.0
 %patch16 -p1 -b .build-fixes
 %patch17 -p1 -b .ssl-include
 %patch18 -p1 -b .openssl-1.1-fix
+%patch19 -p1 -b .add-loongarch64-support
 
 %build
 cp -fp %SOURCE3 rpm
@@ -365,6 +370,9 @@ fi
 %{_mandir}/man1/*
 
 %changelog
+* Thu Dec  8 2022 huajingyun <huajingyun@loongson.cn> - 2:2.14.1-52
+-  Add loongarch64 support
+
 * Tue Aug 31 2021 caodongxia <caodongxia@huawei.com> - 2:2.14.1-51
 - Fix help package install warning 
 
