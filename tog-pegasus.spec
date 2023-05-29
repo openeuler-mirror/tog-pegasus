@@ -6,7 +6,7 @@
 
 Name:           tog-pegasus
 Version:        %{major_ver}.1
-Release:        52
+Release:        53
 Epoch:          2
 Summary:        OpenPegasus WBEM Services for Linux
 License:        MIT
@@ -147,6 +147,10 @@ export PATH=$PEGASUS_HOME/bin:$PATH
 
 export PEGASUS_EXTRA_C_FLAGS="$RPM_OPT_FLAGS -fPIC -g -Wall -Wno-unused -fno-strict-aliasing"
 export PEGASUS_EXTRA_CXX_FLAGS="$PEGASUS_EXTRA_C_FLAGS"
+%if "%toolchain" == "clang"
+	export PEGASUS_EXTRA_C_FLAGS="$PEGASUS_EXTRA_C_FLAGS -Wno-error=reserved-user-defined-literal"
+	export PEGASUS_EXTRA_CXX_FLAGS="$PEGASUS_EXTRA_CXX_FLAGS -Wno-error=reserved-user-defined-literal"
+%endif
 export PEGASUS_EXTRA_LINK_FLAGS="$RPM_OPT_FLAGS"
 export PEGASUS_EXTRA_PROGRAM_LINK_FLAGS="-g -pie -Wl,-z,relro,-z,now,-z,nodlopen,-z,noexecstack"
 export SYS_INCLUDES=-I/usr/kerberos/include
@@ -370,6 +374,9 @@ fi
 %{_mandir}/man1/*
 
 %changelog
+* Thu May 25 2023 yoo <sunyuechi@iscas.ac.cn> - %{major_ver}.1-53
+- fix clang build error
+
 * Thu Dec  8 2022 huajingyun <huajingyun@loongson.cn> - 2:2.14.1-52
 -  Add loongarch64 support
 
